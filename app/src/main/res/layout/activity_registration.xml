@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrationActivity">
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        >
+        <include
+            android:id="@+id/toolbarRegistration"
+            layout="@layout/primary_toolbar">
+        </include>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:textSize="20sp"
+            android:textFontWeight="700"
+            android:textColor="@color/cus_blue" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/enter_user"
+            android:layout_marginStart="35dp"
+            android:layout_gravity="start"
+            android:textColor="@color/cus_blue"
+            android:textSize="13sp" />
+
+        <EditText
+            android:id="@+id/etRegistrationUserName"
+            android:hint="Arrietty Earwig"
+            android:layout_marginTop="5dp"
+            android:paddingTop="0dp"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="30dp"
+            android:backgroundTint="@color/cus_blue"
+            android:lines="1"
+            android:inputType="text"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/enter_password"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="start"
+            android:textColor="@color/cus_blue"
+            android:textSize="13sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:paddingTop="0dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_marginTop="5dp"
+                android:paddingTop="0dp"
+                android:layout_marginHorizontal="30dp"
+                android:id="@+id/etRegistrationPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="@string/enter_password"
+                android:singleLine="true"
+                android:inputType="textPassword"
+                android:backgroundTint="@color/cus_blue"
+                android:textSize="16sp" />
+            <ImageButton
+                android:id="@+id/ibRegistrationChangePasswordVisibility"
+                android:layout_marginLeft="-90dp"
+                style="?android:buttonBarButtonStyle"
+                android:paddingBottom="5dp"
+                android:src="@drawable/ic_baseline_visibility_off_24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnRegistrationCreateAccount"
+            android:backgroundTint="@color/cus_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/create_account"
+            android:layout_marginBottom="8dp"
+            android:layout_marginHorizontal="45dp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

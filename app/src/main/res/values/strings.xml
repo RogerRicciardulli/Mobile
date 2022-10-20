@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Examenes</string>
+    <string name="placeholder">PlaceHolder</string>
+    <string name="placeholder_2">PlaceHolder 2</string>
+    <string name="cover">Portada</string>
+    <string name="name">Nombre</string>
+    <string name="gender">Genero</string>
+    <string name="age">Edad</string>
+    <string name="eye_color">Color de ojos</string>
+    <string name="hair_color">Color de pelo</string>
+    <string name="movie">Pelicula</string>
+    <string name="characters">Personajes</string>
+    <string name="show">Mostrar</string>
+    <string name="elements">Elementos</string>
+    <string name="user">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="enter_password">Ingrese contraseña</string>
+    <string name="remember_user">Recordar Usuario</string>
+    <string name="login">INICIAR SESION</string>
+    <string name="signup_message">¿No tienes una cuenta? Registrate</string>
+    <string name="movies">Peliculas</string>
+    <string name="director">Director</string>
+    <string name="productor">Productor</string>
+    <string name="duration">Duración</string>
+    <string name="release">Lanzamiento</string>
+    <string name="score">Puntuación</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ornare urna nec sem cursus semper. Aliquam aliquam lobortis metus, vitae consectetur magna tempus sit amet. Donec hendrerit porta turpis, id feugiat augue congue at. Phasellus posuere ligula a tincidunt rhoncus. Fusce laoreet augue sed turpis elementum molestie. Nullam vulputate scelerisque nisl, at varius massa. Duis facilisis elementum auctor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam et semper lacus. Curabitur ullamcorper eros eu commodo sollicitudin. Aliquam vel leo pulvinar, tincidunt orci et, sagittis diam. Cras faucibus ac dui sed auctor.
+
+Vestibulum a metus ante. Suspendisse pulvinar, erat ac placerat semper, magna tellus efficitur urna, ac porttitor dolor diam vel erat. Sed accumsan quis metus eu pharetra. Donec sed massa massa. Donec vulputate sit amet enim vitae semper. Cras tristique lacinia rhoncus. Nam vitae velit eu metus condimentum varius in a nibh. Integer et arcu consequat, euismod neque sit amet, imperdiet sapien. Fusce ornare iaculis libero, quis convallis ligula ullamcorper a.
+
+Pellentesque consequat pulvinar porttitor. Integer at tellus magna. Cras tincidunt tortor orci, non volutpat ex blandit eu. Sed aliquet turpis eu elit sollicitudin, pretium ultricies orci aliquet. Sed congue semper elit eleifend porttitor. Vivamus feugiat velit ut finibus rhoncus. Cras pulvinar posuere nisi, non elementum nisi lobortis vel. Morbi at efficitur ante, non porta diam. Proin eu auctor mi. Morbi a fringilla eros, non volutpat nibh. Fusce sodales ante a varius rhoncus. Pellentesque id semper nisi, eu scelerisque tellus. Donec sed laoreet augue, eu molestie justo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque ac mi convallis, hendrerit elit ac, malesuada diam. Donec nisl felis, tristique ut magna ornare, placerat luctus nisl.
+
+Quisque porta tellus diam, faucibus sollicitudin arcu tempor ac. Sed nec libero vitae odio tincidunt vehicula. Donec sapien diam, viverra ut diam id, semper eleifend magna. Donec dignissim neque elit, ut interdum neque facilisis sit amet. Mauris eu blandit lorem. Nunc pulvinar metus sed iaculis varius. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam aliquam dignissim libero. Cras et odio pulvinar, egestas lectus ut, bibendum mi.
+
+Nulla facilisi. Duis eleifend hendrerit eros, mattis tristique metus commodo non. Morbi hendrerit condimentum ante, vitae pulvinar massa congue eu. Proin rhoncus eget tortor quis fermentum. Praesent imperdiet, risus luctus cursus pretium, arcu nisl scelerisque ipsum, ac tincidunt leo eros non metus. Morbi ullamcorper scelerisque vestibulum. Nullam sed metus viverra, lacinia.</string>
+    <string name="register">Registro</string>
+    <string name="enter_user">Ingrese usuario</string>
+    <string name="create_account">CREAR CUENTA</string>
+    <string name="login_EN">Login</string>
+    <string name="wiki">Wiki</string>
+</resources>
