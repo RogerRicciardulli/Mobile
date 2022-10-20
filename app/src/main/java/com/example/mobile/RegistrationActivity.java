@@ -38,7 +38,7 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(!isValid()){
-                    Toast.makeText(RegistrationActivity.this, "Completar datos",Toast.LENGTH_SHORT).show();
+                    ExtensionesKt.mensajeCorto(RegistrationActivity.this, "Completar datos");
                     return;
                 }
                 User user = new User();
@@ -80,7 +80,7 @@ public class RegistrationActivity extends AppCompatActivity {
             UserManager.getInstance(RegistrationActivity.this).registrarUsuario(user);
             etRegistrationUserName.setText("");
             etRegistrationPassword.setText("");
-            Toast.makeText(RegistrationActivity.this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
+            ExtensionesKt.mensajeCorto(RegistrationActivity.this, "Usuario registrado correctamente");
         } catch (Exception e) {
             e.printStackTrace();
         }

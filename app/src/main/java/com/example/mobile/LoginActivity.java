@@ -5,14 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.mobile.helper.MenuMain;
 import com.example.mobile.helper.SP;
@@ -69,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     etUserName.setText("");
                     etPassword.setText("");
-                    Toast.makeText(LoginActivity.this, "Usuario o Contraseña incorrecta", Toast.LENGTH_SHORT).show();
+                    ExtensionesKt.mensajeCorto(LoginActivity.this,"Usuario o Contraseña incorrecta");
                 }
             }
         });
@@ -91,11 +89,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private boolean checkUserExistence(String username, String password) {
         boolean exists = false;
-        Log.i("Info", "Valor Informacion");
         if(isValid()){
-            Log.i("Info", "Valor wirh");
             for(User user : getUsuarios()){
-                Log.i("Info", user.toString());
                 if(user.getUsername().equals(etUserName.getText().toString()) && user.getPassword().equals(etPassword.getText().toString()))
                     exists = true;
             }
