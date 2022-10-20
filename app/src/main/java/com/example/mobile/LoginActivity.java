@@ -63,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                         sharedPreferencesHelper.setString(SP.REMEMBER_USER_USERNAME, "");
                     }
                     Intent intent = new Intent(LoginActivity.this, MainWikiActivity.class);
+                    //Intent intent = new Intent(LoginActivity.this, PruebaActivity.class);
                     startActivity(intent);
                 } else {
                     etUserName.setText("");

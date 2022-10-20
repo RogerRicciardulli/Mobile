@@ -39,4 +39,5 @@ public class MainWikiActivity extends AppCompatActivity {
             }
         });
     }
+
 }
