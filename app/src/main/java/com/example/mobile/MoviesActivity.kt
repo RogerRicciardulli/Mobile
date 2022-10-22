@@ -1,31 +1,38 @@
 package com.example.mobile
 
-import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
-import com.example.mobile.list.movie.MovieAdapter
 import android.content.Intent
 import android.content.res.Resources
-import com.example.mobile.MainWikiActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import com.example.mobile.R
-import com.example.mobile.helper.MenuMain
-import android.widget.Spinner
-import android.widget.ArrayAdapter
 import android.widget.AdapterView
-import com.example.mobile.MoviesActivity
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.mobile.MovieDetailActivity
+import androidx.recyclerview.widget.RecyclerView
+import com.example.mobile.helper.MenuMain
+import com.example.mobile.helper.SP
+import com.example.mobile.helper.SharedPreferencesHelper
 import com.example.mobile.list.movie.Movie
-import java.util.ArrayList
+import com.example.mobile.list.movie.MovieAdapter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import retrofit2.Call
+import retrofit2.Response
+import java.util.*
 
 class MoviesActivity : AppCompatActivity() {
     private var rvMovieList: RecyclerView? = null
     private var adapter: MovieAdapter? = null
     private var count = 30
+
+    private var apiResponse = listOf<Movie>()
+    private var sharedPreferencesHelper: SharedPreferencesHelper? = null
 
     //TODO: Cambiar el margen horizontal en pantallas mas grandes
     override fun onBackPressed() {
@@ -38,16 +45,33 @@ class MoviesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movies)
         MenuMain.Init(this, R.id.toolbarMovies)
-        setupAdapter()
+
+        sharedPreferencesHelper = SharedPreferencesHelper(getPreferences(android.content.Context.MODE_PRIVATE))
+
+        // Llamada a la API
+        lifecycleScope.launch {
+            runBlocking(Dispatchers.IO) {
+                apiResponse = getFilms()
+                setupAdapter()
+            }
+        }
+        mensajeCorto("Cargando informacion...")
+        Thread.sleep(3500)
+
         val dropdown = findViewById<Spinner>(R.id.spinnerMovies)
-        val items = arrayOf("5", "20", "50", "100", "250")
+        val items = arrayOf("5", "15", "30")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
+        var movies: List<Movie>
+
         dropdown.adapter = adapter
         dropdown.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(adapterView: AdapterView<*>, view: View, i: Int, l: Long) {
+                // La primera vez que se llama a la API se guardan los datos en SharedPreferences para utilizarlos sin consultarlos de nuevo
+                uploadDataInSharedPreferences()
                 val item = adapterView.getItemAtPosition(i)
                 count = item.toString().toInt()
-                this@MoviesActivity.adapter!!.set(getPlaceHolders(count))
+                movies = convertToMovie(count)
+                this@MoviesActivity.adapter!!.set(movies)
             }
 
             override fun onNothingSelected(adapterView: AdapterView<*>?) {}
@@ -60,7 +84,7 @@ class MoviesActivity : AppCompatActivity() {
         if (rvMovieList != null) {
             val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(this, numberOfColumns)
             rvMovieList!!.layoutManager = layoutManager
-            adapter = MovieAdapter(getPlaceHolders(count)) {
+            adapter = MovieAdapter(apiResponse) {
                 val intent = Intent(this@MoviesActivity, MovieDetailActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -84,13 +108,54 @@ class MoviesActivity : AppCompatActivity() {
         super.onStart()
     }
 
-    private fun getPlaceHolders(count: Int): List<Movie> {
-        val movies = ArrayList<Movie>()
-        for (i in 0 until count) {
-            val id = Integer.toString(i)
-            movies.add(Movie(id, "PlaceHolder_$id", "", null))
+    private fun getFilms(): List<Movie> {
+        var apiResponse = ArrayList<Movie>()
+        val api = RetroFitClient.retrofit.create(MyAPI::class.java)
+        val callGetPost = api.getFilms()
+        callGetPost.enqueue(object : retrofit2.Callback<List<MovieResponse>>{
+            override fun onResponse(call: Call<List<MovieResponse>>, response: Response<List<MovieResponse>>) {
+                val apiRest = response.body()
+                apiRest?.forEach {
+                    val movie = Movie(it.id, it.title, "",null)
+                    apiResponse.add(movie)
+                }
+                Log.d("REST", "Cantidad de peliculas: " + apiRest?.size.toString())
+            }
+            override fun onFailure(call: Call<List<MovieResponse>>, t: Throwable) {
+                Log.e("REST", t.message ?:"")
+            }
+        })
+        return apiResponse
+    }
+
+    private fun convertToMovie(count: Int): List<Movie> {
+        val allFilms = sharedPreferencesHelper!!.getString(SP.MOVIES_WITHOUT_DETAIL)
+        var filmName = StringBuilder()
+        var beginning = 0
+        var films = ArrayList<Movie>()
+        for(counter in allFilms.indices){
+            if(allFilms[counter] == '-' && films.count() <= count-1){
+                filmName.append(allFilms.substring(beginning, counter-1))
+                films.add(Movie("", filmName.toString(),"",null))
+                beginning = counter+2
+                filmName.setLength(0)
+            }
         }
-        return movies
+        return films;
+    }
+
+    private fun uploadDataInSharedPreferences(){
+        val builder = StringBuilder()
+        if(apiResponse.isNotEmpty() && sharedPreferencesHelper!!.getString(SP.MOVIES_WITHOUT_DETAIL)
+                .isNotEmpty()) {
+            for(counter in apiResponse.indices){
+                builder.append(apiResponse[counter].title)
+                if(counter != apiResponse.size-1){
+                    builder.append(" - ")
+                }
+            }
+            sharedPreferencesHelper!!.setString(SP.MOVIES_WITHOUT_DETAIL, builder.toString())
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
