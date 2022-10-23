@@ -136,8 +136,7 @@ class MoviesActivity : AppCompatActivity() {
     }
 
     private fun convertToMovie(contador: Int): List<MovieDetail> {
-        val allFilms = sharedPreferencesHelper!!.getString(SP.MOVIES_WITHOUT_DETAIL)
-        Log.d("LOG", "Data guardada: " + allFilms)
+        val allFilms = sharedPreferencesHelper!!.getString(SP.MOVIES_WITH_DETAIL)
         val OriginalTitle = StringBuilder()
         val OriginalTitleRomanised = StringBuilder()
         val Description = StringBuilder()
@@ -223,14 +222,12 @@ class MoviesActivity : AppCompatActivity() {
                 }
             }
         }
-        Log.d("LOG", "Data guardada: " + allFilms)
         return films;
     }
 
     private fun uploadDataInSharedPreferences(){
         val builder = StringBuilder()
-        if(apiResponse.isNotEmpty() && sharedPreferencesHelper!!.getString(SP.MOVIES_WITHOUT_DETAIL)
-                .isNotEmpty()) {
+        if(apiResponse.isNotEmpty()) {
             for(counter in apiResponse.indices){
                 builder.append(apiResponse[counter].originalTitle)
                 builder.append(" | ")
@@ -252,8 +249,8 @@ class MoviesActivity : AppCompatActivity() {
                     builder.append("* ")
                 }
             }
-            sharedPreferencesHelper!!.setString(SP.MOVIES_WITHOUT_DETAIL, builder.toString())
-            Log.d("REST", sharedPreferencesHelper!!.getString(SP.MOVIES_WITHOUT_DETAIL))
+            sharedPreferencesHelper!!.setString(SP.MOVIES_WITH_DETAIL, builder.toString())
+            Log.d("REST", sharedPreferencesHelper!!.getString(SP.MOVIES_WITH_DETAIL))
         }
     }
 

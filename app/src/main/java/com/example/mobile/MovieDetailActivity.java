@@ -1,6 +1,6 @@
 package com.example.mobile;
 
-import static com.example.mobile.ExtensionesKt.convertToMovie;
+import static com.example.mobile.ExtensionesKt.getImage;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,11 +9,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.mobile.helper.MenuMain;
-import com.example.mobile.list.movie.MovieDetail;
-
-import java.util.List;
 
 public class MovieDetailActivity extends AppCompatActivity {
     private EditText etOriginalTitleRomanised;
@@ -24,6 +22,8 @@ public class MovieDetailActivity extends AppCompatActivity {
     private EditText etLanzamiento;
     private EditText etPuntuacion;
     private EditText etDescripcion;
+    private ImageView ivImage;
+
 
     private String originalTitleRomanised;
     private String originalTitle;
@@ -53,6 +53,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         etLanzamiento = findViewById(R.id.etLanzamiento);
         etPuntuacion = findViewById(R.id.etPuntuacion);
         etDescripcion = findViewById(R.id.etDescripcion);
+        ivImage = findViewById(R.id.ivImage);
 
         Intent intent = getIntent();
         originalTitleRomanised = intent.getStringExtra("originalTitleRomanised");
@@ -72,10 +73,8 @@ public class MovieDetailActivity extends AppCompatActivity {
         etLanzamiento.setText(releaseDate);
         etPuntuacion.setText(rtScore);
         etDescripcion.setText(description);
-
-        Log.d("LOG", "MovieDetailActivity: " + originalTitleRomanised + ", " + originalTitle+ ", " + directorName
-                + ", " + productorName + ", " + releaseDate + ", " + runningTime + ", " + rtScore + ", " + description);
-        //List<MovieDetail> movies = convertToMovie(30);
+        int resID = getResources().getIdentifier(getImage(originalTitle), "drawable", getPackageName());
+        ivImage.setImageResource(resID);
     }
 
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
@@ -91,4 +90,5 @@ public class MovieDetailActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

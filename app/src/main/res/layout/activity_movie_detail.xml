@@ -45,11 +45,12 @@
                     android:textSize="25sp"></EditText>
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginHorizontal="30dp"
-                    android:background="@color/cus_white"
-                    android:src="@drawable/ic_baseline_movie_24"></ImageView>
+                    android:id="@+id/ivImage"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:layout_marginHorizontal="55dp"
+                    android:gravity="center"
+                    android:src="@drawable/castle_in_the_sky"></ImageView>
 
                 <TextView
                     android:layout_width="match_parent"
