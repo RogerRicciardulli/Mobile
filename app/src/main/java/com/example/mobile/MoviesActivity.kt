@@ -85,6 +85,14 @@ class MoviesActivity : AppCompatActivity() {
             rvMovieList!!.layoutManager = layoutManager
             adapter = MovieAdapter(apiResponse) {
                 val intent = Intent(this@MoviesActivity, MovieDetailActivity::class.java)
+                intent.putExtra("originalTitleRomanised",it.originalTitleRomanised)
+                intent.putExtra("originalTitle",it.originalTitle)
+                intent.putExtra("directorName",it.directorName)
+                intent.putExtra("productorName",it.productorName)
+                intent.putExtra("releaseDate",it.releaseDate)
+                intent.putExtra("runningTime",it.runningTime)
+                intent.putExtra("rtScore",it.rtScore)
+                intent.putExtra("description",it.description)
                 startActivity(intent)
                 finish()
             }
