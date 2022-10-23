@@ -22,7 +22,7 @@ public class MovieDetailActivity extends AppCompatActivity {
     private EditText etLanzamiento;
     private EditText etPuntuacion;
     private EditText etDescripcion;
-    private ImageView ivImage;
+    private ImageView ivMovieImage;
 
 
     private String originalTitleRomanised;
@@ -53,7 +53,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         etLanzamiento = findViewById(R.id.etLanzamiento);
         etPuntuacion = findViewById(R.id.etPuntuacion);
         etDescripcion = findViewById(R.id.etDescripcion);
-        ivImage = findViewById(R.id.ivImage);
+        ivMovieImage = findViewById(R.id.ivSelectedMovieImage);
 
         Intent intent = getIntent();
         originalTitleRomanised = intent.getStringExtra("originalTitleRomanised");
@@ -74,7 +74,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         etPuntuacion.setText(rtScore);
         etDescripcion.setText(description);
         int resID = getResources().getIdentifier(getImage(originalTitle), "drawable", getPackageName());
-        ivImage.setImageResource(resID);
+        ivMovieImage.setImageResource(resID);
     }
 
     public boolean onCreateOptionsMenu(android.view.Menu menu) {

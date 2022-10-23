@@ -9,5 +9,5 @@ interface MyAPI {
     fun getFilms() : Call<List<MovieResponse>>
 
     @GET("/people")
-    fun getPeople() : Call<List<CharacterResponse>>
+    fun getCharacters() : Call<List<CharacterResponse>>
 }

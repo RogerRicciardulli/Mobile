@@ -6,15 +6,16 @@ public class CharacterDetail {
     private String Age;
     private String EyeColor;
     private String HairColor;
-    private String Film;
 
-    public CharacterDetail(String name, String gender, String age, String eyeColor, String hairColor, String film) {
+    public CharacterDetail(String name, String gender, String age, String eyeColor, String hairColor) {
         Name = name;
         Gender = gender;
         Age = age;
         EyeColor = eyeColor;
         HairColor = hairColor;
-        Film = film;
+    }
+
+    public CharacterDetail() {
     }
 
     public String getName() {
@@ -55,13 +56,5 @@ public class CharacterDetail {
 
     public void setHairColor(String hairColor) {
         HairColor = hairColor;
-    }
-
-    public String getFilm() {
-        return Film;
-    }
-
-    public void setFilm(String film) {
-        Film = film;
     }
 }

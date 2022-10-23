@@ -12,7 +12,7 @@
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
         <ImageView
-            android:id="@+id/ivImage"
+            android:id="@+id/ivMovieImage"
             android:background="@color/cus_white"
             android:layout_width="match_parent"
             android:layout_height="80dp"

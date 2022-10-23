@@ -11,10 +11,10 @@ import com.example.mobile.R;
 
 public class MovieViewHolder extends RecyclerView.ViewHolder{
     public TextView txtMovieName;
-    public ImageView ivImage;
+    public ImageView ivMovieImage;
     public MovieViewHolder(@NonNull View itemView) {
         super(itemView);
         txtMovieName = itemView.findViewById(R.id.txtMovieName);
-        ivImage = itemView.findViewById(R.id.ivImage);
+        ivMovieImage = itemView.findViewById(R.id.ivMovieImage);
     }
 }

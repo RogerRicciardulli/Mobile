@@ -93,7 +93,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder>{
                 imageId = 2131165355;
                 break;
             case "Arrietty":
-                imageId = 0;
+                imageId = 2131165367;
                 break;
             case "From Up on Poppy Hill":
                 imageId = 2131165348;
@@ -111,7 +111,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder>{
                 imageId = 2131165361;
                 break;
         }
-        holder.ivImage.setImageResource(imageId);
+        holder.ivMovieImage.setImageResource(imageId);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

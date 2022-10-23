@@ -33,7 +33,6 @@ class MoviesActivity : AppCompatActivity() {
     private var apiResponse = listOf<MovieDetail>()
     private var sharedPreferencesHelper: SharedPreferencesHelper? = null
 
-    //TODO: Cambiar el margen horizontal en pantallas mas grandes
     override fun onBackPressed() {
         val intent = Intent(this@MoviesActivity, MainWikiActivity::class.java)
         startActivity(intent)
@@ -103,7 +102,7 @@ class MoviesActivity : AppCompatActivity() {
     }
 
     private fun getNumberOfColumnsByScreenSize(screenWidth: Int): Int {
-        Log.d("LOG", Integer.toString(screenWidth))
+        Log.d("LOG", screenWidth.toString())
         return if (screenWidth < 500) {
             1
         } else {

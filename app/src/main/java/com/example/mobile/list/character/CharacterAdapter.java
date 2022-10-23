@@ -13,10 +13,10 @@ import com.example.mobile.R;
 import java.util.List;
 
 public class CharacterAdapter extends RecyclerView.Adapter<CharacterViewHolder>{
-    private List<Character> characterList;
+    private List<CharacterDetail> characterList;
     OnItemClickListener onItemClickListener;
 
-    public CharacterAdapter(List<Character> characterList, OnItemClickListener onItemClickListener) {
+    public CharacterAdapter(List<CharacterDetail> characterList, OnItemClickListener onItemClickListener) {
         this.characterList = characterList;
         this.onItemClickListener = onItemClickListener;
     }
@@ -25,7 +25,7 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterViewHolder>{
         characterList.clear();
         notifyItemRangeRemoved(0, size);
     }
-    public void set(List<Character> characterList){
+    public void set(List<CharacterDetail> characterList){
         clear();
         this.characterList = characterList;
         notifyItemRangeInserted(0, this.characterList.size());
@@ -55,6 +55,6 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterViewHolder>{
         return characterList.size();
     }
     public interface OnItemClickListener{
-        void onItemClick(Character character);
+        void onItemClick(CharacterDetail character);
     }
 }

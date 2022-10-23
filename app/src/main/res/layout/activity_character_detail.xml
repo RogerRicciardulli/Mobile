@@ -20,7 +20,8 @@
                android:layout_width="match_parent"
                android:layout_height="match_parent"
                android:orientation="vertical">
-               <TextView
+               <EditText
+                   android:id="@+id/etTitleName"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:textSize="40sp"
@@ -28,34 +29,10 @@
                    android:gravity="center"
                    android:textColor="#000"
                    android:text="@string/placeholder">
-               </TextView>
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:textSize="25sp"
-                   android:textColor="#000"
-                   android:layout_marginTop="15dp"
-                   android:layout_marginBottom="2dp"
-                   android:gravity="center"
-                   android:text="@string/placeholder">
-               </TextView>
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:textSize="25sp"
-                   android:gravity="center"
-                   android:layout_marginBottom="2dp"
-                   android:text="@string/placeholder_2">
-               </TextView>
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_marginBottom="2dp"
-                   android:layout_height="wrap_content"
-                   android:textSize="25sp"
-                   android:gravity="center"
-                   android:text="@string/placeholder_2">
-               </TextView>
+               </EditText>
+
                <ImageView
+                   android:id="@+id/ivSelectedCharacterImage"
                    android:background="@color/cus_white"
                    android:layout_width="match_parent"
                    android:layout_marginHorizontal="30dp"
@@ -85,7 +62,8 @@
                        style="@style/TextAppearance.AppCompat.Title"
                        android:text="@string/name">
                    </TextView>
-                   <TextView
+                   <EditText
+                       android:id="@+id/etName"
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
                        android:textSize="18sp"
@@ -93,14 +71,8 @@
                        android:gravity="start"
                        style="@style/TextAppearance.AppCompat.Subhead"
                        android:text="01">
-                   </TextView>
-                   <TextView
-                       android:layout_width="match_parent"
-                       android:background="#aaa"
-                       android:layout_marginVertical="5dp"
-                       android:layout_height="1dp">
+                   </EditText>
 
-                   </TextView>
                </LinearLayout>
                <LinearLayout
                    android:layout_width="match_parent"
@@ -118,7 +90,8 @@
                        android:text="@string/gender">
                    </TextView>
 
-                   <TextView
+                   <EditText
+                       android:id="@+id/etGender"
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
                        android:textSize="18sp"
@@ -126,15 +99,7 @@
                        android:gravity="start"
                        style="@style/TextAppearance.AppCompat.Subhead"
                        android:text="02">
-                   </TextView>
-                   <TextView
-                       android:layout_width="match_parent"
-                       android:layout_height="1dp"
-                       android:layout_marginVertical="5dp"
-                       android:background="#aaa">
-
-                   </TextView>
-
+                   </EditText>
                </LinearLayout>
                <LinearLayout
                    android:layout_width="match_parent"
@@ -151,7 +116,8 @@
                        style="@style/TextAppearance.AppCompat.Title"
                        android:text="@string/age">
                    </TextView>
-                   <TextView
+                   <EditText
+                       android:id="@+id/etAge"
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
                        android:textSize="18sp"
@@ -159,14 +125,7 @@
                        android:gravity="start"
                        style="@style/TextAppearance.AppCompat.Subhead"
                        android:text="03">
-                   </TextView>
-                   <TextView
-                       android:layout_width="match_parent"
-                       android:background="#aaa"
-                       android:layout_marginVertical="5dp"
-                       android:layout_height="1dp">
-
-                   </TextView>
+                   </EditText>
                </LinearLayout>
                <LinearLayout
                    android:layout_width="match_parent"
@@ -183,7 +142,8 @@
                        style="@style/TextAppearance.AppCompat.Title"
                        android:text="@string/eye_color">
                    </TextView>
-                   <TextView
+                   <EditText
+                       android:id="@+id/etEyeColor"
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
                        android:textSize="18sp"
@@ -191,14 +151,7 @@
                        android:gravity="start"
                        style="@style/TextAppearance.AppCompat.Subhead"
                        android:text="04">
-                   </TextView>
-                   <TextView
-                       android:layout_width="match_parent"
-                       android:background="#aaa"
-                       android:layout_marginVertical="5dp"
-                       android:layout_height="1dp">
-
-                   </TextView>
+                   </EditText>
                </LinearLayout>
 
                <LinearLayout
@@ -216,7 +169,8 @@
                        style="@style/TextAppearance.AppCompat.Title"
                        android:text="@string/hair_color">
                    </TextView>
-                   <TextView
+                   <EditText
+                       android:id="@+id/etHairColor"
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
                        android:textSize="18sp"
@@ -224,47 +178,7 @@
                        android:gravity="start"
                        style="@style/TextAppearance.AppCompat.Subhead"
                        android:text="05">
-                   </TextView>
-                   <TextView
-                       android:layout_width="match_parent"
-                       android:background="#aaa"
-                       android:layout_marginVertical="5dp"
-                       android:layout_height="1dp">
-
-                   </TextView>
-               </LinearLayout>
-
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:orientation="vertical"
-                   android:layout_marginTop="5dp"
-                   android:layout_marginHorizontal="20dp">
-                   <TextView
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:textSize="18sp"
-                       android:textColor="#000"
-                       android:gravity="start"
-                       style="@style/TextAppearance.AppCompat.Title"
-                       android:text="@string/movie">
-                   </TextView>
-                   <TextView
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:textSize="18sp"
-                       android:textColor="#000"
-                       android:gravity="start"
-                       style="@style/TextAppearance.AppCompat.Subhead"
-                       android:text="05">
-                   </TextView>
-                   <TextView
-                       android:layout_width="match_parent"
-                       android:background="#aaa"
-                       android:layout_marginVertical="5dp"
-                       android:layout_height="1dp">
-
-                   </TextView>
+                   </EditText>
                </LinearLayout>
            </LinearLayout>
        </ScrollView>
