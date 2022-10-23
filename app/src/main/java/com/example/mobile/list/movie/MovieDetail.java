@@ -22,6 +22,9 @@ public class MovieDetail {
         RtScore = rtScore;
     }
 
+    public MovieDetail() {
+    }
+
     public String getOriginalTitle() {
         return OriginalTitle;
     }

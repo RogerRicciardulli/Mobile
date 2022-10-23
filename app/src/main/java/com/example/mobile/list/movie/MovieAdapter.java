@@ -13,10 +13,10 @@ import com.example.mobile.R;
 import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder>{
-    private List<Movie> movieList;
+    private List<MovieDetail> movieList;
     OnItemClickListener onItemClickListener;
 
-    public MovieAdapter(List<Movie> movieList, OnItemClickListener onItemClickListener) {
+    public MovieAdapter(List<MovieDetail> movieList, OnItemClickListener onItemClickListener) {
         this.movieList = movieList;
         this.onItemClickListener = onItemClickListener;
     }
@@ -25,7 +25,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder>{
         movieList.clear();
         notifyItemRangeRemoved(0, size);
     }
-    public  void set(List<Movie> movieList){
+    public  void set(List<MovieDetail> movieList){
         clear();
         this.movieList = movieList;
         notifyItemRangeInserted(0, this.movieList.size());
@@ -41,7 +41,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        holder.txtMovieName.setText(movieList.get(position).getTitle());
+        holder.txtMovieName.setText(movieList.get(position).getOriginalTitle());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,6 +55,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder>{
         return movieList.size();
     }
     public interface OnItemClickListener{
-        void onItemClick(Movie movie);
+        void onItemClick(MovieDetail movie);
     }
 }
