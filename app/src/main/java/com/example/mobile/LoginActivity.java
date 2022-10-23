@@ -1,8 +1,15 @@
 package com.example.mobile;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -30,6 +37,8 @@ public class LoginActivity extends AppCompatActivity {
     private ImageButton ibChangePasswordVisibility;
     private boolean showPassword = false;
     private SharedPreferencesHelper sharedPreferencesHelper;
+    private final static String CHANNEL_ID = "NOTIFICACION";
+    private final static int NOTIFICACION_ID = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,12 +67,13 @@ public class LoginActivity extends AppCompatActivity {
                     if(cbRememberUser.isChecked()){
                         sharedPreferencesHelper.setBoolean(SP.REMEMBER_USER, true);
                         sharedPreferencesHelper.setString(SP.REMEMBER_USER_USERNAME, etUserName.getText().toString());
+                        createNotificationChannel();
+                        createNotification();
                     }else{
                         sharedPreferencesHelper.setBoolean(SP.REMEMBER_USER, false);
                         sharedPreferencesHelper.setString(SP.REMEMBER_USER_USERNAME, "");
                     }
                     Intent intent = new Intent(LoginActivity.this, MainWikiActivity.class);
-                    //Intent intent = new Intent(LoginActivity.this, PruebaActivity.class);
                     startActivity(intent);
                 } else {
                     etUserName.setText("");
@@ -91,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
     private boolean checkUserExistence(String username, String password) {
         boolean exists = false;
         if(isValid()){
-            for(User user : getUsuarios()){
+            for(User user : getUsers()){
                 if(user.getUsername().equals(etUserName.getText().toString()) && user.getPassword().equals(etPassword.getText().toString()))
                     exists = true;
             }
@@ -105,12 +115,36 @@ public class LoginActivity extends AppCompatActivity {
         return !userName.isEmpty() && !password.isEmpty();
     }
 
-    private List<User> getUsuarios() {
+    private List<User> getUsers() {
         try {
             return UserManager.getInstance(this).getUsuarios();
         } catch (Exception e) {
             e.printStackTrace();
             return new ArrayList();
         }
+    }
+
+
+    private void createNotificationChannel(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            CharSequence name = "Notification";
+            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, name, NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+    }
+
+    private void createNotification(){
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
+        builder.setSmallIcon(R.mipmap.ic_launcher_round);
+        builder.setContentTitle("Studio Ghibli");
+        builder.setContentText("Nombre de usuario guardado");
+        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        builder.setLights(Color.MAGENTA, 1000, 1000);
+        builder.setVibrate(new long[]{1000,1000,1000,1000,1000});
+        builder.setDefaults(Notification.DEFAULT_SOUND);
+
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
+        notificationManagerCompat.notify(NOTIFICACION_ID, builder.build());
     }
 }
