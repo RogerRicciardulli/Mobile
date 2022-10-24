@@ -33,7 +33,6 @@
 
                <ImageView
                    android:id="@+id/ivSelectedCharacterImage"
-                   android:background="@color/cus_white"
                    android:layout_width="match_parent"
                    android:layout_marginHorizontal="30dp"
                    android:layout_height="200dp"

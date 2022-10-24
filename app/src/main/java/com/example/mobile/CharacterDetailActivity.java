@@ -4,6 +4,7 @@ import static com.example.mobile.ExtensionesKt.getImage;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -19,6 +20,7 @@ public class CharacterDetailActivity extends AppCompatActivity {
     private EditText etAge;
     private EditText etEyeColor;
     private EditText etHairColor;
+    private ImageView ivCharacterImage;
 
     private String name;
     private String gender;
@@ -44,6 +46,7 @@ public class CharacterDetailActivity extends AppCompatActivity {
         etAge = findViewById(R.id.etAge);
         etEyeColor = findViewById(R.id.etEyeColor);
         etHairColor = findViewById(R.id.etHairColor);
+        ivCharacterImage = findViewById(R.id.ivSelectedCharacterImage);
 
         Intent intent = getIntent();
         name = intent.getStringExtra("name");
@@ -59,8 +62,8 @@ public class CharacterDetailActivity extends AppCompatActivity {
         etEyeColor.setText(eyeColor);
         etHairColor.setText(hairColor);
 
-        //int resID = getResources().getIdentifier(getImage(name), "drawable", getPackageName());
-        //ivCharacterImage.setImageResource(resID);
+        int resID = getResources().getIdentifier(getImage(name), "drawable", getPackageName());
+        ivCharacterImage.setImageResource(resID);
     }
 
     public boolean onCreateOptionsMenu(android.view.Menu menu) {

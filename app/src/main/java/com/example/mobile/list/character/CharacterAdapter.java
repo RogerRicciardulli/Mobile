@@ -41,7 +41,41 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull CharacterViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        int imageId = 0;
         holder.txtCharacterName.setText(characterList.get(position).getName());
+        switch(characterList.get(position).getName()){
+            case "Haku":
+                imageId = 2131165372;
+                break;
+            case "Pazu":
+                imageId = 2131165376;
+                break;
+            case "Lusheeta Toel Ul Laputa":
+                imageId = 2131165381;
+                break;
+            case "Captain Dola":
+                imageId = 2131165379;
+                break;
+            case "Romska Palo Ul Laputa":
+                imageId = 2131165382;
+                break;
+            case "Uncle Pom":
+                imageId = 2131165378;
+                break;
+            case "General Mouro":
+                imageId = 2131165380;
+                break;
+            case "Duffi":
+                imageId = 2131165371;
+                break;
+            case "Louis":
+                imageId = 2131165373;
+                break;
+            case "Charles":
+                imageId = 2131165369;
+                break;
+        }
+        holder.ivCharacterImage.setImageResource(imageId);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -58,7 +58,7 @@ class CharactersActivity : AppCompatActivity() {
         Thread.sleep(3500)
 
         val dropdown = findViewById<Spinner>(R.id.spinnerCharacters)
-        val items = arrayOf("20", "40", "60")
+        val items = arrayOf("10", "30", "60")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
         var characters: List<CharacterDetail>
 
